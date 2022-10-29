@@ -63,7 +63,14 @@
         </mat-error>
 
         </mat-form-field>
-
+        <button
+        *ngIf="isPasswordReset"
+        mat-stroked-button
+        type="submit"
+        [disabled]="loading"
+        >
+        Send Reset Email
+        </button>
         <button *ngIf="!isPasswordReset"
         mat-raised-button
         color="accent"
@@ -73,8 +80,10 @@
         Submit
         </button>
     </form>
-    <button mat-button *ngIf="isLogin && !isPasswordReset" 
+    <button 
+    mat-button 
+    *ngIf="isLogin && !isPasswordReset" 
     (click)="changeType('reset')">
-    Forgot Password?
+    Forgot Password
     </button>
 </mat-card>
