@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import firebase from 'firebase/compat/app';
-import { switchMap, map } from 'rxjs/operators';
+import { switchMap } from 'rxjs/operators';
 import { Board, Task } from './board.model';
 
 
@@ -19,7 +19,7 @@ export class BoardService {
     const user = await this.afAuth.currentUser;
     return this.db.collection('boards').add({
       ...data,
-      uid: user?.uid,
+      uid: user!.uid,
       tasks: [{ description: 'Hello!', label: 'yellow' }]
     });
   }
